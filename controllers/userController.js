@@ -279,7 +279,11 @@ export const sendEmail = asyncHandler(async (req, res) => {
   );
 
   // Create reset link
-  const resetLink = `${process.env.DOMAIN_URL}/reset-password?token=${token}`;
+  const resetLink = `${
+    process.env.NODE_ENV === "development"
+      ? process.env.LOCAL_DOMAIN_URL
+      : process.env.DOMAIN_URL
+  }/reset-password?token=${token}`;
 
   const mailOptions = {
     from: process.env.MAIL_USERNAME,

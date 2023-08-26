@@ -10,7 +10,10 @@ import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 const PORT = process.env.PORT || 8080;
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin:
+    process.env.NODE_ENV === "development"
+      ? process.env.LOCAL_DOMAIN_URL
+      : process.env.DOMAIN_URL,
   optionsSuccessStatus: 200,
   credentials: true,
 };
