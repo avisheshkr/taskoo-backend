@@ -285,7 +285,7 @@ export const sendEmail = asyncHandler(async (req, res) => {
     from: process.env.MAIL_USERNAME,
     to: email,
     subject: "Password reset",
-    html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
+    html: `<p>Hi there,</p><p>Click on the link below to reset your password.</p><p><a href="${resetLink}">${resetLink}</a></p><p>This link will expire in 30 minutes. If you did not request for password reset,<br />you can safely ignore this email.</p><p>Best Regards,</p><p>Taskoo Team</p>`,
   };
 
   await transporter.sendMail(mailOptions);
